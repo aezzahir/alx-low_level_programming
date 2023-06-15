@@ -1,4 +1,5 @@
-ALX Low-Level Programming & Algorithms ― C
+<h1>ALX Low-Level Programming & Algorithms ― C</h1>
+
 Description
 This repository contains projects for training in low-level programming and algorithm concepts. Here we'll be working with the C language to develop different applications, focusing on understanding the inner workings of programming languages and operating systems.
 
