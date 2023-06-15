@@ -1,20 +1,20 @@
 <h1>ALX Low-Level Programming & Algorithms ― C</h1>
 
-Description
-This repository contains projects for training in low-level programming and algorithm concepts. Here we'll be working with the C language to develop different applications, focusing on understanding the inner workings of programming languages and operating systems.
+<h2>Description</h2>
+    This repository contains projects for training in low-level programming and algorithm concepts. Here we'll be working with the C language to develop different applications, focusing on understanding the inner workings of programming languages and operating systems.
 
-Table of Contents
-Installation
-Usage
-Projects
-Contributing
-License
-Installation
+<h2>Table of Contents</h2>
+- Installation
+- Usage
+- Projects
+- Contributing
+- License
+- Installation
 To use these projects, you will need a Linux environment and GCC installed. Clone this repository into your machine with:
 
 bash
 Copy code
-git clone https://github.com/[your-username]/alx-low_level_programming.git
+git clone https://github.com/ayb1337/alx-low_level_programming.git
 Usage
 Each directory within the repository corresponds to a project. Navigate into a project of interest, compile the C files using GCC, and run the executable:
 
