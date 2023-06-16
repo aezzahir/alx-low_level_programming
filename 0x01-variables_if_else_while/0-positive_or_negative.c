@@ -1,6 +1,6 @@
 #include <stdlib.h>
 #include <time.h>
-#include <stdio.h>  // We need to include this to use printf()
+#include <stdio.h>  /* We need to include this to use printf() */
 
 /* betty style doc for function main goes there */
 int main(void)
