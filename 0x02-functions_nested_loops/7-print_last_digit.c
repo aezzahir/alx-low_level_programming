@@ -15,13 +15,11 @@ int r;
 if (n >= 0)
 {
 r = n % 10;
-_putchar('0' + r);
-return (r);
 }
 else
 {
-r = (-1 * n) % 10;
+r = -(n % 10);
+}
 _putchar('0' + r);
 return (r);
-}
 }
