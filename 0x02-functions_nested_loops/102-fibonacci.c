@@ -25,20 +25,21 @@ int i;
 fibonacci1 = 1;
 fibonacci2 = 2;
 print_digits(fibonacci1);
-_putchar('\n');
+_putchar(',');
+_putchar(' ');
 print_digits(fibonacci2);
-_putchar('\n');
-
 i = 2;
 while (i < 50)
 {
 fibonacci3 = fibonacci1 + fibonacci2;
+_putchar(',');
+_putchar(' ');
 print_digits(fibonacci3);
-_putchar('\n');
 fibonacci1 = fibonacci2;
 fibonacci2 = fibonacci3;
 i++;
 }
+_putchar('\n');
 }
 
 /**
