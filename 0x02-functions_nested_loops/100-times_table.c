@@ -18,6 +18,8 @@ for (i = 0; i <= n; i++)
 for (j = 0; j <= n; j++)
 {
 r = i * j;
+if (j != 0)
+{
 q = r;
 k = 3;
 while (q < 1000  && k > 0)
@@ -26,7 +28,7 @@ _putchar(' ');
 q = q * 10;
 k--;
 }
-
+}
 print_digits(r);
 if (j != n)
 {
