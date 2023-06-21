@@ -23,13 +23,13 @@ long int fibonacci1, fibonacci2, fibonacci3, _sum;
 fibonacci1 = 1;
 fibonacci2 = 2;
 fibonacci3 = 0;
-_sum = fibonacci1;
+_sum = fibonacci2;
 while (fibonacci3 < 4000000)
 {
 fibonacci3 = fibonacci1 + fibonacci2;
-if(fibonacci3 % 2 == 1)
+if (fibonacci3 % 2 == 0)
 {
-_sum += fibonacci3;  
+_sum += fibonacci3;
 }
 fibonacci1 = fibonacci2;
 fibonacci2 = fibonacci3;
