@@ -1,6 +1,15 @@
 #include "main.h"
 void print_digits(int n);
-
+/**
+ * main - check the code.
+ *
+ * Return: Always 0.
+ */
+int main(void)
+{
+print_sum_mltiples_3_and_5();
+return (0);
+}
 /**
  * print_sum_mltiples_3_and_5 - Functionfunction that prints the n times table,
  *  starting with 0.
@@ -15,14 +24,14 @@ multiple_5 = 0;
 multiple_3 = 0;
 _sum = 0;
 i = 1;
-while (multiple_3 < 1024 )
+while (multiple_3 < 1024)
 {
 multiple_3 = 3 * i;
-if( 5 * i < 1024)
+if (5 * i < 1024)
 {
 multiple_5 = 5 * i;
 }
-else 
+else
 {
 multiple_5 = 0;
 }
