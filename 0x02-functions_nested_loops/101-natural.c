@@ -19,24 +19,16 @@ return (0);
 
 void print_sum_mltiples_3_and_5(void)
 {
-int multiple_5, multiple_3, _sum, i;
-multiple_5 = 0;
-multiple_3 = 0;
+int _sum, i;
 _sum = 0;
-i = 1;
-while (multiple_3 < 1024)
+i = 0;
+while (i < 1024)
 {
-multiple_3 = 3 * i;
-if (5 * i < 1024)
-{
-multiple_5 = 5 * i;
-}
-else
-{
-multiple_5 = 0;
-}
-_sum += multiple_5 + multiple_3;
-i++;
+    if (i % 5 == 0 || i % 3 == 0)
+    {
+        _sum += i;
+    }
+    i++;
 }
 print_digits(_sum);
 _putchar('\n');
