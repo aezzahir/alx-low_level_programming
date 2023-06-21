@@ -18,5 +18,6 @@ void print_to_98(int n);
 void print_times_table(int n);
 void print_sum_mltiples_3_and_5(void);
 void fibonacci_50(void);
+void fibonacci_sum(void);
 
 #endif
