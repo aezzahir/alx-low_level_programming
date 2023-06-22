@@ -45,4 +45,5 @@ if (n > 2)
 {
 printf("%ld\n", n);
 }
+printf("\n");
 }
