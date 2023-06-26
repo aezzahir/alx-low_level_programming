@@ -8,26 +8,20 @@
 
 void rev_string(char *s)
 {
-int n, i;
-char rev[100];
-
-n = _strlen(s) - 1;
+int i;
+int j;
+char c;
 i = 0;
-while (n >= 0)
+j = _strlen(s) - 1;
+while (i < j)
 {
-rev[i] = *(s + n);
+c = *(s + i);
+*(s + i) = *(s + j);
+*(s + j) = c;
 i++;
-n--;
+j--;
 }
-i = 0;
-while (*(rev + i) != '\0')
-{
-s[i] = rev[i];
-i++;
 }
-
-}
-
 
 /**
  * _strlen -  returns the length of a string.
@@ -45,3 +39,4 @@ i++;
 }
 return (i);
 }
+
