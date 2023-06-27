@@ -2,24 +2,38 @@
 #include <stdlib.h>
 #include <time.h>
 
-#define PASSWORD_LENGTH 10
+#define MAX_VAL 2772
+#define MAX_ASCII_VAL 78
 
+/**
+ * main - program that generates random valid
+ * passwords for the program 101-crackme
+ *
+ * Return: Always 0 (Success)
+ */
 int main(void)
 {
-    /* Character set to select the password characters from */
-    char charset[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-    int n = sizeof(charset) - 1;
+	int password[100];
+	int i, total, ascii_val;
 
-    srand(time(0)); /* Seed the random number generator */
+	total = 0;
 
-    printf("Generated password: ");
+	srand(time(NULL));
 
-    for (int i = 0; i < PASSWORD_LENGTH; i++)
-    {
-        /* Pick a random character from the charset and print it */
-        printf("%c", charset[rand() % n]);
-    }
+	for (i = 0; i < 100; i++)
+	{
+		password[i] = rand() % MAX_ASCII_VAL;
+		total += (password[i] + '0');
+		putchar(password[i] + '0');
 
-    printf("\n");
-    return 0;
+		if ((MAX_VAL - total) - '0' < MAX_ASCII_VAL)
+		{
+			ascii_val = MAX_VAL - total - '0';
+			total += ascii_val;
+			putchar(ascii_val + '0');
+			break;
+		}
+	}
+
+	return (0);
 }
