@@ -1,59 +1,37 @@
-#include "main.h"
-
-
 /**
- * *leet - encodes a string into 1337.
- * @s: string
- * Return: pointer to string
- */
+ * leet - a function that encodes a string into 1337
+ *
+ * @s: string input
+ *
+ * Return: @s
+*/
 
 char *leet(char *s)
 {
-	int i;
+	int i, c = 0;
+	int sl[] = {97, 101, 111, 116, 108};
+	int ul[] = {65, 69, 79, 84, 76};
+	int n[] = {52, 51, 48, 55, 49};
 
-	i = 0;
-
-	while (s[i] != '\0')
+	/*iterate values in array s*/
+	while (s[c] != '\0')
 	{
-		switch (s[i])
+		/**
+		 * loop through array value five times
+		 * to check if the value is equal to
+		 * any small letter in array sl or
+		 * upper letter in array ul and if it
+		 * is replace it with the value in array n
+		*/
+		for (i = 0; i < 5; i++)
 		{
-			case 'a':
-				s[i] = '4';
+			if (s[c] == sl[i] || s[c] == ul[i])
+			{
+				s[c] = n[i];
 				break;
-			case 'A':
-				s[i] = '4';
-                                break;
-			case 'e':
-				s[i] = '3';
-                                break;
-			case 'E':
-				s[i] = '3';
-                                break;
-			case 'o':
-				s[i] = '0';
-                                break;
-			case 'O':
-				s[i] = '0';
-                                break;
-			case 't':
-				s[i] = '7';
-                                break;
-			case 'T':
-				s[i] = '7';
-                                break;
-			case 'l':
-				s[i] = '1';
-                                break;
-			case 'L':
-                                s[i] = '1';
-                                break;
-			default:
-				break;
+			}
 		}
-		i++;
-
+		c++;
 	}
-
 	return (s);
 }
-
