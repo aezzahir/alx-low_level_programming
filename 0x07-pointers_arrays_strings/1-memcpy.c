@@ -12,6 +12,8 @@ char *_memcpy(char *dest, char *src, unsigned int n)
 {
 	unsigned int i;
 
+	char *start = dest;
+
 	i = 0;
 
 	for ( ; i < n; i++)
@@ -20,6 +22,6 @@ char *_memcpy(char *dest, char *src, unsigned int n)
 		dest++;
 		src++;
 	}
-	return (dest);
+	return (start);
 }
 
