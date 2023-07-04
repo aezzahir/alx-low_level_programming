@@ -21,7 +21,7 @@ char *cap_string(char *s)
 
 		for (; j < 10; j++)
 		{
-			if (s[i] == S[j] && (s[i + 1] > 96 && s[i + 1] < 123))
+			if ((i == 0 || s[i] == S[j]) && (s[i + 1] > 96 && s[i + 1] < 123))
 				s[i + 1] = s[i + 1] - 32;
 		}
 		
@@ -31,4 +31,3 @@ char *cap_string(char *s)
 	}
 	return (s);
 }
-
