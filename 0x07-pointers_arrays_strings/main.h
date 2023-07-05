@@ -12,7 +12,13 @@ unsigned int _strspn(char *s, char *accept);
 =======
 char *_strpbrk(char *s, char *accept);
 char *_strstr(char *haystack, char *needle);
+<<<<<<< HEAD
 >>>>>>> ac4ac8915ccbd083e001664c127bc8281d3e2e1b
+=======
+void print_chessboard(char (*a)[8]);
+void print_diagsums(int *a, int size);
+void set_string(char **s, char *to);
+void set_string(char **s, char *to);
+>>>>>>> f4baab0417da76a542479320700a9f67155950c4
 
 #endif /* MAIN_H */
-
