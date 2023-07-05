@@ -9,22 +9,23 @@
  */
 char *_strstr(char *haystack, char *needle)
 {
-char *hay, *nee;
+	char *hay, *nee;
 
-while (*haystack != '\0')
-{
-hay = haystack;
-nee = needle;
-while (*nee != '\0' && *haystack == *nee)
-{
-haystack++;
-nee++;
-}
-if (!*nee)
-{
-return (hay);
-}
-haystack++;
-}
-return ('\0');
-}
+	while (*haystack != '\0')
+	{
+	hay = haystack;
+	nee = needle;
+	while (*nee != '\0' && *haystack == *nee)
+	{
+	haystack++;
+	nee++;
+	}
+	if (!*nee)
+	{
+	return (hay);
+	}
+	haystack++;
+	}
+	return ('\0');
+	}
+
