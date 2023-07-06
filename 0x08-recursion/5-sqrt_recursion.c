@@ -15,7 +15,7 @@ int sqrt_recursive_helper(int n, int min, int max)
 int guess, guess_squared;
 
 guess = (min + max) / 2;
-guess_squared = guess * guess;
+guess_squared = guess *guess;
 
 if (guess_squared == n)
 {
