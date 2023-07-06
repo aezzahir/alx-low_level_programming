@@ -12,5 +12,6 @@ int _pow_recursion(int x, int y);
 long int _sqrt_recursion(long int n);
 int is_prime_number(int n);
 int is_palindrome(char *s);
+int is_palindrome_helper(char *s, int i, int j);
 
 #endif /* MAIN_H */
