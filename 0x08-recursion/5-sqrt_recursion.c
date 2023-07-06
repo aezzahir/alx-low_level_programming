@@ -56,5 +56,5 @@ if (n < 0)
 {
 return (-1);
 }
-return (sqrt_recursive_helper(n, 2, n));
+return (sqrt_recursive_helper(n, 1, n));
 }
