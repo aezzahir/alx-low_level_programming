@@ -10,9 +10,9 @@
  *
  * Return: square root of @n or -1 if none exists
  */
-int sqrt_recursive_helper(int n, int min, int max)
+long int sqrt_recursive_helper(long int n, long int min, long int max)
 {
-int guess, guess_squared;
+long int guess, guess_squared;
 
 guess = (min + max) / 2;
 guess_squared = guess *guess;
@@ -46,7 +46,7 @@ return (sqrt_recursive_helper(n, min, guess - 1));
  * Return: int
  */
 
-int _sqrt_recursion(int n)
+long int _sqrt_recursion(long int n)
 {
 if (n == 0 || n == 1)
 {
