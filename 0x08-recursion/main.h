@@ -13,5 +13,6 @@ long int _sqrt_recursion(long int n);
 int is_prime_number(int n);
 int is_palindrome(char *s);
 int is_palindrome_helper(char *s, int i, int j);
+int wildcmp(char *s1, char *s2);
 
 #endif /* MAIN_H */
