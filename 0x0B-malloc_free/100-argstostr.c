@@ -24,10 +24,9 @@ len = 0;
 for (; i < ac; i++)
 {
 j = 0;
-for (; av[i][j] != '\0'; j++, len++)
+for (; av[i][j] != '\0'; j++)
 {
 len++;
-}
 }
 len++;
 s = malloc(len *sizeof(char));
