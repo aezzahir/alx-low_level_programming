@@ -29,6 +29,7 @@ for (; av[i][j] != '\0'; j++)
 len++;
 }
 len++;
+}
 s = malloc(len *sizeof(char));
 if (s == NULL)
 {
@@ -42,7 +43,6 @@ s[k] = av[i][j];
 }
 s[k] = '\n';
 k++;
-}
 }
 s[k] = '\0';
 return (s);
