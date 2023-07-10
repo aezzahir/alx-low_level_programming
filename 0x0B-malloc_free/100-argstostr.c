@@ -30,7 +30,7 @@ len++;
 }
 }
 len++;
-s = malloc(len * sizeof(char));
+s = malloc(len *sizeof(char));
 if (s == NULL)
 {
 return (NULL);
