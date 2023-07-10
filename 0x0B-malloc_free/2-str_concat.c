@@ -14,6 +14,15 @@ int len1, len2, i;
 
 char *ptr;
 
+if (s1 == NULL)
+{
+*s1 = '\0';
+}
+if (s2 == NULL)
+{
+*s2 = '\0';
+}
+
 len1 = 0;
 
 while (s1[len1])
@@ -27,7 +36,7 @@ while (s2[len2])
 {
 len2++;
 }
-ptr = (char *)malloc((len1 + len2) *sizeof(char));
+ptr = (char *)malloc((len1 + len2 + 1) *sizeof(char));
 
 if (ptr == NULL)
 {
