@@ -46,7 +46,10 @@ char **strtow(char *str)
 		if (str[i] != ' ' && (i == 0 || str[i - 1] == ' '))
 		{
 			len = 0;
-			for (; str[i + len] != ' ' && str[i + len] != '\0'; len++);
+
+			for (; str[i + len] != ' ' && str[i + len] != '\0'; len++)
+			;
+
 			words[j] = malloc((len + 1) * sizeof(char));
 			if (words[j] == NULL)
 			{
