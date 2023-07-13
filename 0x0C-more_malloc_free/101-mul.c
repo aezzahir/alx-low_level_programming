@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
+#include "main.h"
 /**
  * print_error_and_exit - print error & exit
  * Return: void
