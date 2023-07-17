@@ -1,5 +1,6 @@
 #include "dog.h"
-
+#include <stdlib.h>
+#include <stdio.h>
 /**
  * init_dog - dog function
  * @d: dog var
@@ -12,7 +13,10 @@
 
 void init_dog(struct dog *d, char *name, float age, char *owner)
 {
+if (d != NULL)
+{
 d->age = age;
 d->name = name;
 d->owner = owner;
+}
 }
