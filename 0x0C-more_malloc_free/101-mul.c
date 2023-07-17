@@ -21,7 +21,7 @@ void print_error_and_exit(void)
 
 void print_number(char *number)
 {
-	int len, i;
+	unsigned int len, i;
 
 	len = strlen(number);
 
@@ -40,9 +40,9 @@ void print_number(char *number)
  * Return: int
  */
 
-int is_digit(char *number)
+long int is_digit(char *number)
 {
-	int len, i;
+	unsigned long int len, i;
 
 	len = strlen(number);
 	i = 0;
@@ -64,7 +64,7 @@ int is_digit(char *number)
 
 void multiply(char *num1, char *num2)
 {
-	long int res,  n1, n2;
+	unsigned long int res,  n1, n2;
 
 	n1 = atoi(num1);
 	n2 = atoi(num2);
