@@ -21,11 +21,14 @@ if (size < 0)
 {
 return (-1);
 }
+if (array && cmp)
+{
 for (; i < size; i++)
 {
 if (cmp(array[i]))
 {
 return (i);
+}
 }
 }
 return (-1);
