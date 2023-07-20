@@ -6,4 +6,10 @@
     "files.trimTrailingWhitespace": true,
     "files.insertFinalNewline": true,
     "C_Cpp.clang_format_style": "{ BasedOnStyle: Google, IndentWidth: 8, ColumnLimit: 80}",
+    "files.associations": {
+        "stdio.h": "c",
+        "0-object_like_macro.h": "c",
+        "__locale": "c"
+    },
+    "C_Cpp.errorSquiggles": "disabled",
 }
