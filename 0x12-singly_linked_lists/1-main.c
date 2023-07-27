@@ -10,25 +10,46 @@
  */
 int main(void)
 {
-    list_t *head;
-    list_t *new;
-    list_t hello = {"World", 5, NULL};
-    size_t n;
 
-    head = &hello;
-    new = malloc(sizeof(list_t));
-    if (new == NULL)
-    {
-        printf("Error\n");
-        return (1);
-    }
-    new->str = strdup("Hello");
-    new->len = 5;
-    new->next = head;
-    head = new;
-    n = list_len(head);
-    printf("-> %lu elements\n", n);
-    free(new->str);
-    free(new);
-    return (0);
+typedef struct Node
+{
+int data;
+struct Node *next;
+}
+Node;
+
+Node *A;
+A = NULL;
+
+Node *nextNode, *secondNode;
+
+nextNode = (Node*) malloc(sizeof(Node));
+secondNode = (Node*) malloc(sizeof(Node));
+
+A = nextNode;
+printf("Adress of A = %p\n",&A);
+printf("A = %p\n", A);
+printf("Data of A : %d\n", (*A).data);
+printf("Adress of A : %p\n", (*A).next);
+nextNode->data = 2;
+nextNode->next = secondNode;
+secondNode->data = 3;
+secondNode->next = NULL;
+
+
+Node *temp;
+
+temp = A;
+int i;
+i = 0;
+while (temp != NULL)
+{
+    printf("Node (%d) Adress : %p\n", i, &((*temp).data));
+    printf("Node (%d) Adress : %p\n", i, &temp);
+    printf("Node (%d) data : %d\n", i, (*temp).data);
+    printf("Node (%d) next Node : %p\n", i, (*temp).next);
+    temp = temp->next;
+    i++;
+}
+
 }
