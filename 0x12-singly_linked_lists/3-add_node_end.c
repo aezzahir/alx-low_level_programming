@@ -44,5 +44,5 @@ tmp = tmp->next;
 }
 tmp->next = new_node;
 }
-return (new_node);
+return (*head);
 }
