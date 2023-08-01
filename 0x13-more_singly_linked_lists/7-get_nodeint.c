@@ -18,5 +18,5 @@ current = current->next;
 i++;
 }
 
-return (current); // It will be NULL if the index is out of range
+return (current);
 }
