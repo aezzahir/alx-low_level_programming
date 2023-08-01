@@ -1,7 +1,8 @@
 #include "lists.h"
 
 /**
- * free_listint2 - frees all the elements of a listint_t list and sets head to NULL
+ * free_listint2 - frees all the elements of a
+ * listint_t list and sets head to NULL
  * @head: pointer to the pointer to the first node of the list
  */
 
