@@ -11,10 +11,10 @@
 
 listint_t *add_nodeint(listint_t **head, const int n)
 {
-listint_t *begin = (listint_t*) malloc(sizeof(listint_t));
+listint_t *begin = (listint_t *) malloc(sizeof(listint_t));
 if (begin == NULL)
 {
-    return (NULL);
+return (NULL);
 }
 begin->next = *head;
 begin->n = n;
