@@ -7,15 +7,14 @@
  * Return: returns the number of nodes
  */
 
-void free_listint(listint_t *head);
+void free_listint(listint_t *head)
 {
-istint_t *current;
+listint_t *current;
 
 while (head != NULL)
 {
 current = head;
 head = head->next;
-free(current->str);
 free(current);
 }
 }
