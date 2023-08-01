@@ -1,24 +1,22 @@
 #include "lists.h"
 
 /**
- * get_nodeint_at_index - Deletes the head node of a listint_t linked list
- * @head: Double pointer to the head of the linked list
- * Return: The data (n) of the deleted head node, or 0 if the list is empty
+ * get_nodeint_at_index - Returns the nth node of a listint_t linked list
+ * @head: Pointer to the head of the linked list
+ * @index: Index of the node to retrieve (starting from 0)
+ * Return: Pointer to the node at the given index, or NULL if not found
  */
 
 listint_t *get_nodeint_at_index(listint_t *head, unsigned int index)
 {
 unsigned int i = 0;
+listint_t *current = head;
 
-while (head != NULL)
+while (current != NULL && i < index)
 {
-head = head->next;
-if (i == index)
-{
-return (head);
-}
+current = current->next;
 i++;
 }
 
-return (NULL);
+return (current); // It will be NULL if the index is out of range
 }
