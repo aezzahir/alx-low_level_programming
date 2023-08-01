@@ -9,7 +9,8 @@
     "files.associations": {
         "stdio.h": "c",
         "0-object_like_macro.h": "c",
-        "__locale": "c"
+        "__locale": "c",
+        "iterator": "c"
     },
     "C_Cpp.errorSquiggles": "disabled",
 }

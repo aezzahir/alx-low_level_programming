@@ -5,8 +5,6 @@
 
 void Insert_nth(int data, int n);
 void Insert(int x);
-void delete(int n);
-void reverse();
 void Print();
 typedef struct Node
 {
@@ -25,7 +23,7 @@ int main(void)
 
 head = NULL;
 printf("How many numbers ? \n");
-int n, i, x, nth, data, del;
+int n, i, x, nth, data;
 scanf("%d", &n);
 for (i = 0; i < n ; i++)
 {
@@ -39,13 +37,6 @@ scanf("%d", &nth);
 printf("Data ? \n");
 scanf("%d", &data);
 Insert_nth(data,nth);
-Print();
-printf("delete n-th position ? \n");
-scanf("%d", &del);
-delete(del);
-Print();
-printf( " Reverse ...... \n");
-reverse();
 Print();
 }
 
@@ -109,30 +100,3 @@ void Insert_nth(int data, int n)
     temp2->next = temp1;
 }
 
-void delete (int n)
-{
-    Node* temp = head;
-    for(int i = 0; i < n-2; i++)
-    {
-        temp = temp->next;
-    }
-    Node*  temp1 = temp->next; // nth node
-    temp->next = temp1-> next; // (n+1) node
-    free(temp1); // delete temp2
-}
-
-void reverse()
-{
-    Node *next, *prev, *current;
-    current = head;
-    prev = NULL;
-
-    while (current != NULL)
-    {
-        next = current->next;
-        current->next = prev;
-        prev = current;
-        current = next;
-    }
-     head = prev;
-}
