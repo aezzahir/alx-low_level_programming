@@ -18,13 +18,9 @@ if ((n & mask) == mask)
 {
 return (1);
 }
-else if ((n & mask) != mask)
-{
-return (0);
-}
 else
 {
-return (-1);
+return (0);
 }
 return (-1);
 }
