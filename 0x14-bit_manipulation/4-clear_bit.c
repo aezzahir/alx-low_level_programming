@@ -19,13 +19,14 @@ return (-1);
 }
 
 mask = 1 << index;
-if ((mask & ~*n) == 0)
+if ((mask & *n) == 0)
 {
-*n = *n & ~mask;
 return (1);
 }
 else
 {
-return (-1);
+*n = *n & ~mask;
+return (1);
 }
+return (-1);
 }
