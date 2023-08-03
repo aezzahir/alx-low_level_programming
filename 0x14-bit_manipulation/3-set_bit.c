@@ -17,5 +17,8 @@ if (mask | *n)
 *n = *n | mask;
 return (1);
 }
+else
+{
 return (-1);
+}
 }
