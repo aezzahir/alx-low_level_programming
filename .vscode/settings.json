@@ -10,7 +10,11 @@
         "stdio.h": "c",
         "0-object_like_macro.h": "c",
         "__locale": "c",
-        "iterator": "c"
+        "iterator": "c",
+        "array": "c",
+        "string": "c",
+        "string_view": "c",
+        "vector": "c"
     },
     "C_Cpp.errorSquiggles": "disabled",
 }
