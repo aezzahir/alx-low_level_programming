@@ -7,27 +7,32 @@
  */
 void print_binary(unsigned long int n)
 {
-unsigned long int mask = 1UL << (sizeof(unsigned long int) * 8 - 1);
-int found_one = 0;
+unsigned long int mask = 1;
+unsigned int start_num = 0;
+
+mask = mask << (sizeof(unsigned long int) * 8 - 1);
 
 if (n == 0)
 {
 _putchar('0');
-return;
 }
 
 while (mask != 0)
 {
-if ((n & mask) != 0)
+
+if (mask & n)
 {
 _putchar('1');
-found_one = 1;
+start_num = 1;
 }
-else if (found_one)
+
+else
+{
+if (start_num)
 {
 _putchar('0');
 }
-
-mask >>= 1;
+}
+mask = mask >> 1;
 }
 }
