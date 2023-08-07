@@ -31,13 +31,15 @@ while (text_content[len])
 len++;
 }
 res = write(fd, text_content, len);
+close(fd);
 if (res == -1 || res != len)
 {
-close(fd);
 return (-1);
 }
 }
-
+else
+{
 close(fd);
+}
 return (1);
 }
