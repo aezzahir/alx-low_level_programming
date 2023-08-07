@@ -30,6 +30,7 @@ while (text_content[len])
 {
 len++;
 }
+res = write(fd, text_content, len);
 if (res == -1 || res != len)
 {
 close(fd);
