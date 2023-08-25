@@ -35,19 +35,21 @@ int main(int argc, char **argv)
 		exit(98);
 	}
 
-	if (e_ident[0] != 0x7f || e_ident[1] != 'E' || e_ident[2] != 'L'
-	|| e_ident[3] != 'F')
+	if (e_ident[0] != 0x7f || e_ident[1] != 'E')
 	{
-		fprintf(stderr, "%s is not an ELF file.\n", argv[1]);
-		close(fd);
-		exit(98);
+		if (e_ident[2] != 'L' || e_ident[3] != 'F')
+		{
+			fprintf(stderr, "%s is not an ELF file.\n", argv[1]);
+			close(fd);
+			xit(98);
+		}
 	}
 
 	printf("ELF Header:\n");
-	printf("  Magic:   %02x %02x %02x %02x\n", e_ident[0], e_ident[1],
-	e_ident[2], e_ident[3]);
+	printf("  Magic:   ");
+	printf("%02x %02x", e_ident[0], e_ident[1]);
+	printf(" %02x %02x\n", e_ident[2], e_ident[3]);
 	/* Further fields can be added similarly */
-
 	close(fd);
 	return (0);
 }
