@@ -41,7 +41,7 @@ int main(int argc, char **argv)
 		{
 			fprintf(stderr, "%s is not an ELF file.\n", argv[1]);
 			close(fd);
-			xit(98);
+			exit(98);
 		}
 	}
 
