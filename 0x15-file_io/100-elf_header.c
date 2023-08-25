@@ -7,7 +7,7 @@
 void verifyElfSignature(const unsigned char *signature)
 {
 	size_t i;
-	
+
     static const unsigned char ELF_MAGIC[] = {0x7F, 'E', 'L', 'F'};
 
     for (i = 0; i < sizeof(ELF_MAGIC); i++)
@@ -25,6 +25,8 @@ int main(int argc, char *argv[])
 {
 	Elf64_Ehdr *header;
     int fd;
+	ssize_t bytesRead;
+
     if (argc != 2)
         fprintf(stderr, "Usage: %s <ELF filename>\n", argv[0]), exit(98);
 
@@ -37,7 +39,7 @@ int main(int argc, char *argv[])
     if (!header)
         closeElfFile(fd), fprintf(stderr, "Memory allocation failed\n"), exit(98);
 
-    ssize_t bytesRead = read(fd, header, sizeof(Elf64_Ehdr));
+    bytesRead = read(fd, header, sizeof(Elf64_Ehdr));
     if (bytesRead == -1)
         free(header), closeElfFile(fd), fprintf(stderr, "Error reading %s\n", argv[1]), exit(98);
 
