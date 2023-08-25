@@ -1,72 +1,49 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <fcntl.h>
+#include "elf_headers.h"
 
 /**
- * main - entry point for the ELF header program
- * @argc: argument count
- * @argv: argument vector
- * Return: 0 on success, 98 on failure
+ * verifyElfSignature - Verifies the ELF file signature.
+ * @signature: ELF signature.
  */
-int main(int argc, char **argv)
+void verifyElfSignature(const unsigned char *signature)
 {
-	int fd, i;
-	unsigned char e_ident[16];
-	unsigned short e_type;
-	unsigned long int e_entry;
+    static const unsigned char ELF_MAGIC[] = {0x7F, 'E', 'L', 'F'};
 
-	if (argc != 2)
-	{
-		fprintf(stderr, "Usage: %s elf_filename\n", argv[0]);
-		exit(98);
-	}
+    for (size_t i = 0; i < sizeof(ELF_MAGIC); i++)
+        if (signature[i] != ELF_MAGIC[i])
+            fprintf(stderr, "Error: Not an ELF file\n"), exit(98);
+}
 
-	fd = open(argv[1], O_RDONLY);
-	if (fd == -1)
-	{
-		perror("Error opening file");
-		exit(98);
-	}
+/**
+ * main - Main function.
+ * @argc: Argument count.
+ * @argv: Argument vector.
+ * Return: 0 on success, 98 otherwise.
+ */
+int main(int argc, char *argv[])
+{
+    if (argc != 2)
+        fprintf(stderr, "Usage: %s <ELF filename>\n", argv[0]), exit(98);
 
-	if (read(fd, e_ident, 16) != 16)
-	{
-		perror("Error reading file");
-		close(fd);
-		exit(98);
-	}
+    Elf64_Ehdr *header;
+    int fd;
 
-	if (e_ident[0] != 0x7f || e_ident[1] != 'E' || e_ident[2] != 'L' || e_ident[3] != 'F')
-	{
-		fprintf(stderr, "%s is not an ELF file.\n", argv[1]);
-		close(fd);
-		exit(98);
-	}
-	lseek(fd, 16, SEEK_SET);
-	read(fd, &e_type, sizeof(e_type));
-	lseek(fd, 24, SEEK_SET);
-	read(fd, &e_entry, sizeof(e_entry));
+    fd = open(argv[1], O_RDONLY);
+    handleErrors(fd, argv[1]);
 
-	printf("ELF Header:\n");
-	printf("  Magic:   ");
-	for (i = 0; i < 16; i++)
-		printf("%02x ", e_ident[i]);
-	printf("\n");
+    header = malloc(sizeof(Elf64_Ehdr));
+    if (!header)
+        closeElfFile(fd), fprintf(stderr, "Memory allocation failed\n"), exit(98);
 
-	printf("  Type:                              ");
-	switch (e_type)
-	{
-		case 2:
-			printf("EXEC (Executable file)\n");
-			break;
-		case 3:
-			printf("DYN (Shared object file)\n");
-			break;
-		default:
-			printf("<unknown: %x>\n", e_type);
-			break;
-	}
-	printf("  Entry point address:               %lx\n", e_entry);
-	close(fd);
-	return (0);
+    ssize_t bytesRead = read(fd, header, sizeof(Elf64_Ehdr));
+    if (bytesRead == -1)
+        free(header), closeElfFile(fd), fprintf(stderr, "Error reading %s\n", argv[1]), exit(98);
+
+    verifyElfSignature(header->e_ident);
+    printf("ELF Header:\n");
+    displayMagic(header->e_ident);
+    /*... Call the other display functions ... */
+
+    free(header);
+    closeElfFile(fd);
+    return (0);
 }
