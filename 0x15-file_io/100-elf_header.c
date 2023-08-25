@@ -20,23 +20,12 @@
  */
 void check_if_elf(unsigned char *e_ident)
 {
-	int index = 0;
-
-	while (index < 4)
+	if (e_ident[0] != 0x7F || e_ident[1] != 'E' || e_ident[2] != 'L' || e_ident[3] != 'F')
 	{
-		if (e_ident[index] != 127 &&
-				e_ident[index] != 'E' &&
-				e_ident[index] != 'L' &&
-				e_ident[index] != 'F') /*0x7F is 127 in ASCII*/
-		{
-			dprintf(STDERR_FILENO, "Error: Not an ELF file\n");
-			exit(98);
-		}
-
-		index++;
+		dprintf(STDERR_FILENO, "Error: Not an ELF file\n");
+		exit(98);
 	}
 }
-
 /**
  * print_magic - prints the magic numbers of the ELF file
  *
@@ -281,12 +270,10 @@ void close_file(int elf_file)
 {
 	if (close(elf_file) == -1)
 	{
-		dprintf(STDERR_FILENO,
-				"Error: Can't close fd %d\n", elf_file);
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", elf_file);
 		exit(98);
 	}
 }
-
 /**
  * main - Entry point
  *
@@ -297,10 +284,17 @@ void close_file(int elf_file)
  *
  * Return: Always 0 (success)
  */
-int main(int __attribute__((__unused__)) argc, char *argv[])
+
+int main(int argc, char *argv[])
 {
 	Elf64_Ehdr *elf;
-	int elf_file, read_file;
+	int elf_file;
+
+	if (argc != 2)
+	{
+		dprintf(STDERR_FILENO, "Usage: %s <ELF file>\n", argv[0]);
+		exit(98);
+	}
 
 	elf_file = open(argv[1], O_RDONLY);
 	if (elf_file == -1)
@@ -310,22 +304,21 @@ int main(int __attribute__((__unused__)) argc, char *argv[])
 	}
 
 	elf = malloc(sizeof(Elf64_Ehdr));
-	if (elf == NULL)
+	if (!elf)
 	{
+		dprintf(STDERR_FILENO, "Error: Can't allocate memory\n");
 		close_file(elf_file);
-		free(elf);
-		dprintf(STDERR_FILENO, "Error: Can't read file %s\n", argv[1]);
 		exit(98);
 	}
 
-	read_file = read(elf_file, elf, sizeof(Elf64_Ehdr));
-	if (read_file == -1)
+	if (read(elf_file, elf, sizeof(Elf64_Ehdr)) != sizeof(Elf64_Ehdr))
 	{
 		free(elf);
+		dprintf(STDERR_FILENO, "Error: `%s`: Invalid ELF file\n", argv[1]);
 		close_file(elf_file);
-		dprintf(STDERR_FILENO, "Error: `%s`: No such file\n", argv[1]);
 		exit(98);
 	}
+
 	check_if_elf(elf->e_ident);
 	printf("ELF Header:\n");
 	print_magic(elf->e_ident);
@@ -336,7 +329,10 @@ int main(int __attribute__((__unused__)) argc, char *argv[])
 	print_abi(elf->e_ident);
 	print_type(elf->e_type, elf->e_ident);
 	print_entry(elf->e_entry, elf->e_ident);
+
 	free(elf);
 	close_file(elf_file);
+
 	return (0);
 }
+
