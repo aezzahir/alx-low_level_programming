@@ -6,9 +6,11 @@
  */
 void verifyElfSignature(const unsigned char *signature)
 {
+	size_t i;
+	
     static const unsigned char ELF_MAGIC[] = {0x7F, 'E', 'L', 'F'};
 
-    for (size_t i = 0; i < sizeof(ELF_MAGIC); i++)
+    for (i = 0; i < sizeof(ELF_MAGIC); i++)
         if (signature[i] != ELF_MAGIC[i])
             fprintf(stderr, "Error: Not an ELF file\n"), exit(98);
 }
@@ -21,11 +23,12 @@ void verifyElfSignature(const unsigned char *signature)
  */
 int main(int argc, char *argv[])
 {
+	Elf64_Ehdr *header;
+    int fd;
     if (argc != 2)
         fprintf(stderr, "Usage: %s <ELF filename>\n", argv[0]), exit(98);
 
-    Elf64_Ehdr *header;
-    int fd;
+
 
     fd = open(argv[1], O_RDONLY);
     handleErrors(fd, argv[1]);
